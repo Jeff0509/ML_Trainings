@@ -81,19 +81,37 @@ def search_google_news(query, api_key, cse_id, from_date):
         'cx': cse_id,
         'key': api_key,
         'dateRestrict': f'd{from_date}',
-        'gl': 'au'
+        'gl': 'au',
+        'num': 7,  # Increase the number of results per request
     }
 
-    response = requests.get(search_url, params=params)
-    return response.json()
+    all_results = []  # List to store all results
+
+    while True:
+        response = requests.get(search_url, params=params)
+        data = response.json()
+        items = data.get('items', [])
+
+        if not items:
+            break  # No more results to fetch
+
+        all_results.extend(items)
+
+        # Check if there are more results to fetch
+        if 'nextPage' in data.get('queries', {}).get('nextPage', [{}])[0]:
+            params['start'] = data['queries']['nextPage'][0]['startIndex']
+        else:
+            break
+
+    return all_results
 
 def main():
     api_key = 'AIzaSyBX-V1qjCjwGhykzxaiYkyO2HK0RjL7Fr8'
     cse_id = '237845578820a4aa8'
     #query = 'Vocational Education and Training Victoria Australia'
-    query = 'Melbourne Templestowe Housing Price'
+    query = 'WOW 10.2.5'
     filename = query + '.docx'
-    from_date = '20230101'
+    from_date = '20240101'
 
     results = search_google_news(query, api_key, cse_id, from_date)
     all_html = ""
