@@ -49,6 +49,7 @@ class SQLInsertScriptGenerator:
 # Example usage
 generator = SQLInsertScriptGenerator('C:\Rep\ML_Trainings\Others\Load into PBI TDP Targets FctTable 29th Jan.xlsx', '[dbo].[PBI TDP Targets FctTable]')
 generator.load_excel()
+"""
 generator.set_sql_table_columns([
     # List of SQL table column names
     "Target Year", "Category Code", "Ops Code", "Target Enrolment Type",
@@ -62,5 +63,6 @@ generator.set_sql_table_columns([
     "FinanceActivityCode", "TDP Start Date", "TDP End Date", "TDP Start Month", 
     "TDP End Month", "Credit Points"
 ])
+"""
 output_path = 'C:\Rep\ML_Trainings\Others\Load into PBI TDP Targets FctTable 29th Jan.sql'
 generator.save_scripts_to_file(output_path)
