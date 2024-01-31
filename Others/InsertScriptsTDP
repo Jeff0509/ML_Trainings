@@ -47,10 +47,20 @@ class SQLInsertScriptGenerator:
             file.write(self.generate_all_insert_scripts())
 
 # Example usage
-generator = SQLInsertScriptGenerator('C:\Users\jeff.he\Downloads\Load into PBI TDP Targets FctTable 29th Jan.xlsx', '[dbo].[PBI TDP Targets FctTable]')
+generator = SQLInsertScriptGenerator('C:\Rep\ML_Trainings\Others\Load into PBI TDP Targets FctTable 29th Jan.xlsx', '[dbo].[PBI TDP Targets FctTable]')
 generator.load_excel()
 generator.set_sql_table_columns([
     # List of SQL table column names
+    "Target Year", "Category Code", "Ops Code", "Target Enrolment Type",
+    "Target - Term 1", "Target - Term 2", "Target - Term 3", "Target - Term 4",
+    "Liability Grouping", "Target Type", "Target Start Date", "Baseline Enrolments",
+    "Target #", "Ops-Course-National-Code", "Liability Group", "Finance Location",
+    "Finance Location Descripton", "Study Measure Total", "Study Measure Term 01",
+    "Study Measure Term 02", "Study Measure Term 03", "Study Measure Term 04",
+    "Course Liability Code", "Start Week", "End Week", "Start Term", "End Term",
+    "Fund Code", "Fund Description", "Fund Category", "CourseCodeNAT", 
+    "FinanceActivityCode", "TDP Start Date", "TDP End Date", "TDP Start Month", 
+    "TDP End Month", "Credit Points"
 ])
-output_path = 'C:\Users\jeff.he\Downloads\Load into PBI TDP Targets FctTable 29th Jan.sql'
+output_path = 'C:\Rep\ML_Trainings\Others\Load into PBI TDP Targets FctTable 29th Jan.sql'
 generator.save_scripts_to_file(output_path)
