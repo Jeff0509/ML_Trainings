@@ -109,7 +109,7 @@ def main():
     api_key = 'AIzaSyBX-V1qjCjwGhykzxaiYkyO2HK0RjL7Fr8'
     cse_id = '237845578820a4aa8'
     #query = 'Vocational Education and Training Victoria Australia'
-    query = 'WOW 10.2.5'
+    query = 'Xi Jinping'
     filename = query + '.docx'
     from_date = '20240101'
 
